@@ -72,6 +72,7 @@
     <!-- We skip sources jar generation as we do it with the assembly plugin to have greater control over the content -->
     <source.skip>true</source.skip>
     <kotlin.version>1.3.0</kotlin.version>
+    <r2dbc.version>1.0.0.BUILD-SNAPSHOT</r2dbc.version>
   </properties>
 
   <dependencyManagement>
@@ -131,6 +132,11 @@
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
+      <artifactId>vertx-reactive-streams</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>io.vertx</groupId>
       <artifactId>vertx-lang-js</artifactId>
       <optional>true</optional>
     </dependency>
@@ -158,6 +164,12 @@
       <groupId>io.vertx</groupId>
       <artifactId>vertx-lang-kotlin-gen</artifactId>
       <version>${stack.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>io.r2dbc</groupId>
+      <artifactId>r2dbc-spi</artifactId>
+      <version>${r2dbc.version}</version>
       <optional>true</optional>
     </dependency>
     <!--
@@ -218,6 +230,16 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>spring-libs-snapshot</id>
+      <url>https://repo.spring.io/libs-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
   <build>
     <pluginManagement>
